@@ -1,5 +1,5 @@
 <h2>Order list ID: {{order.id}}</h2>
-Order started: {{order.date | date:"dd/MM/yy HH:mm:ss"}}
+Order started: {{order.date | date:"dd.MM.yy HH:mm:ss"}}
 <ul>
   <li *ngFor="let item of order.items">
     {{item.id}} {{item.name}} {{item.price}}
