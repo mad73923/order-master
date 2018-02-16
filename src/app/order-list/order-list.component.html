@@ -4,10 +4,17 @@ Bestellt um: {{order.date | date:"HH:mm:ss"}}
   <thead>
     <th>#</th>
     <th>Name</th>
-    <th>Preis</th>
+    <th class="text-right">Preis</th>
     <th>Aktion</th>
   </thead>
   <tbody>
      <tr *ngFor="let item of order.items" [apporderlistitem]="item" (onDelete)="deleteItem(item)"></tr>
+
+     <tr *ngIf="order.items.length > 0">
+       <td></td>
+       <th>Summe</th>
+       <td class="text-right">{{order_sum | currency:'EUR'}}</td>
+       <td></td>
+      </tr>
   </tbody>
 </table>
