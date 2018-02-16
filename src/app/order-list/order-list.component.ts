@@ -22,6 +22,10 @@ export class OrderListComponent implements OnInit {
     this.update_order_sum();
   }
 
+  paid(){
+    this.order.paid = true;
+  }
+
   update_order_sum(){
     let erg = 0;
     this.order.items.forEach(element => {

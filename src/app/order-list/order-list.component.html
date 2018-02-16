@@ -1,5 +1,6 @@
 <h2>Bestellung Nummer: {{order.id}}</h2>
-Bestellt um: {{order.date | date:"HH:mm:ss"}}
+Bestellt um: {{order.date | date:"HH:mm:ss"}}<br>
+Bezahlt: {{order.paid ? 'Ja' : 'Nein'}}
 <table class="table table-striped">
   <thead>
     <th>#</th>
@@ -14,7 +15,7 @@ Bestellt um: {{order.date | date:"HH:mm:ss"}}
        <td></td>
        <th>Summe</th>
        <th class="text-right">{{order_sum | currency:'EUR'}}</th>
-       <td></td>
+       <td><button (click)="paid()" type="button" class="btn btn-warning" *ngIf="!order.paid">Bezahlen</button></td>
       </tr>
   </tbody>
 </table>

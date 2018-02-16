@@ -4,6 +4,7 @@ import { OrderItem } from './order-item';
 export const mockOrder: Order = {
     id: 1234,
     date: Date.now(),
+    paid: false,
     items: [
         {id: 9876,
         name:"pizza",
