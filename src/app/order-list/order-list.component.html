@@ -8,6 +8,6 @@ Bestellt um: {{order.date | date:"HH:mm:ss"}}
     <th>Aktion</th>
   </thead>
   <tbody>
-     <tr *ngFor="let item of order.items" [apporderlistitem]="item" (onDelete)="delete($event)"></tr>
+     <tr *ngFor="let item of order.items" [apporderlistitem]="item" (onDelete)="deleteItem(item)"></tr>
   </tbody>
 </table>

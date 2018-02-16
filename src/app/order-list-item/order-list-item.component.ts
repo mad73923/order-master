@@ -12,10 +12,10 @@ export class OrderListItemComponent implements OnInit {
   item: OrderItem;
 
   @Output()
-  onDelete = new EventEmitter<OrderItem>();
+  onDelete = new EventEmitter();
 
   delete(){
-    this.onDelete.emit(this.item);
+    this.onDelete.emit();
   }
 
   constructor() { }

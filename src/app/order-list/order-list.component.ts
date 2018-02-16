@@ -12,12 +12,11 @@ export class OrderListComponent implements OnInit {
 
   order = mockOrder;
 
-  delete(item: OrderItem){
+  deleteItem(item: OrderItem){
     let index = this.order.items.indexOf(item, 0);
     if(index > -1){
       this.order.items.splice(index, 1);
     }
-    console.log("deleted " + index);
   }
 
   constructor() { }
