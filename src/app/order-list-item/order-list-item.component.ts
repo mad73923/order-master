@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {OrderItem} from '../order-item';
 
 @Component({
@@ -10,6 +10,13 @@ export class OrderListItemComponent implements OnInit {
 
   @Input('apporderlistitem')
   item: OrderItem;
+
+  @Output()
+  onDelete = new EventEmitter();
+
+  delete(){
+    this.onDelete.emit();
+  }
 
   constructor() { }
 

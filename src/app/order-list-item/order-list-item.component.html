@@ -1,3 +1,4 @@
-  <td>{{item.id}}</td>
-  <td>{{item.name}}</td>
-  <td>{{item.price | currency:'EUR'}}</td>
+<td>{{item.id}}</td>
+<td>{{item.name}}</td>
+<td>{{item.price | currency:'EUR'}}</td>
+<td><button (click)="delete()" type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td>
