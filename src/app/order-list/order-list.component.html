@@ -13,7 +13,7 @@ Bestellt um: {{order.date | date:"HH:mm:ss"}}
      <tr *ngIf="order.items.length > 0">
        <td></td>
        <th>Summe</th>
-       <td class="text-right">{{order_sum | currency:'EUR'}}</td>
+       <th class="text-right">{{order_sum | currency:'EUR'}}</th>
        <td></td>
       </tr>
   </tbody>
