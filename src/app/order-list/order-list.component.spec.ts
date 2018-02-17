@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 import { OrderListComponent } from './order-list.component';
+import { OrderListItemComponent } from '../order-list-item/order-list-item.component';
 
 describe('OrderListComponent', () => {
   let component: OrderListComponent;
@@ -8,7 +10,8 @@ describe('OrderListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OrderListComponent ]
+      declarations: [ OrderListComponent, OrderListItemComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));

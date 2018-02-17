@@ -1,20 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
-import { OderListItemComponent } from './oder-list-item.component';
+import { OrderListItemComponent } from './order-list-item.component';
 
 describe('OderListItemComponent', () => {
-  let component: OderListItemComponent;
-  let fixture: ComponentFixture<OderListItemComponent>;
+  let component: OrderListItemComponent;
+  let fixture: ComponentFixture<OrderListItemComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OderListItemComponent ]
+      declarations: [ OrderListItemComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OderListItemComponent);
+    fixture = TestBed.createComponent(OrderListItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

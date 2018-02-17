@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+
 import {mockConfig } from '../mock-config'
 import { OrderItem } from '../order-item';
 

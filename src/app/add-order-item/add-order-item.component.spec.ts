@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 import { AddOrderItemComponent } from './add-order-item.component';
 
@@ -8,6 +10,8 @@ describe('AddOrderItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [FormsModule],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       declarations: [ AddOrderItemComponent ]
     })
     .compileComponents();
