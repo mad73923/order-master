@@ -37,6 +37,11 @@ export class OrderListComponent implements OnInit {
     this.order_sum = erg;
   }
 
+  add_item(item: OrderItem){
+    this.order.items.push(item);
+    this.update_order_sum();
+  }
+
   constructor() { }
 
   ngOnInit() {
