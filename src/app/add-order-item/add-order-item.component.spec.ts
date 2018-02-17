@@ -26,4 +26,26 @@ describe('AddOrderItemComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should emit event', (done) => {
+    let test = {count: 5, name: 'test', price: 4.5};
+    //TODO fix this
+    component.count = 5;
+    component.selectedItem = test;
+    component.addItem.subscribe(e => {
+      expect(e).toEqual(test);
+      done();
+    })
+    component.addItemClicked();
+  });
+  it('should not decrement', () => {
+    component.decrementCount();
+    expect(component.count).toEqual(1);
+  });
+
+  it('should increment and decrement', () => {
+    component.incrementCount();
+    expect(component.count).toEqual(2);
+    component.decrementCount();
+    expect(component.count).toEqual(1);
+  })
 });

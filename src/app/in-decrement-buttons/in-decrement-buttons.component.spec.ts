@@ -22,4 +22,16 @@ describe('InDecrementButtonsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should trigger decrement event', (done) => {
+    component.decrement.subscribe(() => {
+      done();
+    });
+    component.decrementClicked();
+  });
+  it('should trigger increment event', (done) => {
+    component.increment.subscribe(() => {
+      done();
+    });
+    component.incrementClicked();
+  });
 });

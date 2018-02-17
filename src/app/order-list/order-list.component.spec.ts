@@ -25,4 +25,24 @@ describe('OrderListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should add a item', () => {
+    component.add_item({count: 1, name: 'Pizza', price: 66});
+    expect(component.order.items.length).toEqual(4);
+  });
+  it('should delete a item', () => {
+    let test1 = {count: 1, name: 'Pizza', price: 66};
+    let test2 = {count: 1, name: 'Pizza', price: 55};
+    component.add_item(test1);
+    //TODO dependency to test above
+    expect(component.order.items.length).toEqual(5);
+    component.deleteItem(test2);
+    expect(component.order.items.length).toEqual(5);
+    component.deleteItem(test1);    
+    expect(component.order.items.length).toEqual(4);
+  });
+  it('should mark the order as paid', () => {
+    expect(component.order.paid).toEqual(false);
+    component.paid();
+    expect(component.order.paid).toEqual(true);
+  });
 });
