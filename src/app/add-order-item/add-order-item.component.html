@@ -1,5 +1,7 @@
 <form>
   <input type="number" class="form-control" id="title" required pattern="[0-9]+" [(ngModel)]="count" name="title" min="1" #title="ngModel">
-  <p>{{count}}</p>
-  <button type="submit" class="btn" [disabled]="!title.valid">Hinzufügen</button>
+  <select class="form-control" required [(ngModel)]="selectedItem" name="test">
+    <option *ngFor="let item of config.availableItems" [ngValue]="item">{{item.name}}</option>
+  </select>
+  <button type="submit" class="btn" (click)="addItem()" [disabled]="!title.valid || selectedItem===undefined">Hinzufügen</button>
 </form>

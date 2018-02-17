@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {mockConfig } from '../mock-config'
+import { OrderItem } from '../order-item';
 
 @Component({
   selector: 'app-add-order-item',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddOrderItemComponent implements OnInit {
 
-  count = 1;
+  @Output()
+  onAddItem = new EventEmitter();
 
-  constructor() { }
+  count = 1;
+  config = mockConfig;
+
+  selectedItem: any;
+
+  addItem(){
+    let item = {count: this.count,
+      name: this.selectedItem.name, 
+      price: this.selectedItem.price} 
+    console.log(item);
+    this.onAddItem.emit(item);
+  }
+
+  constructor() { 
+  }
 
   ngOnInit() {
   }

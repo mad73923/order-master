@@ -23,4 +23,4 @@ Bezahlt: {{order.paid ? 'Ja' : 'Nein'}}
 </table>
 
 <h4>Hinzufügen</h4>
-<app-add-order-item></app-add-order-item>
+<app-add-order-item (onAddItem)="add_item($event)"></app-add-order-item>
