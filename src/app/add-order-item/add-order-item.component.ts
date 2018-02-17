@@ -21,8 +21,17 @@ export class AddOrderItemComponent implements OnInit {
     let item = {count: this.count,
       name: this.selectedItem.name, 
       price: this.selectedItem.price} 
-    console.log(item);
     this.onAddItem.emit(item);
+  }
+
+  decrementCount(){
+    if(this.count > 1){
+      this.count --;
+    }
+  }
+
+  incrementCount(){
+    this.count ++;
   }
 
   constructor() { 

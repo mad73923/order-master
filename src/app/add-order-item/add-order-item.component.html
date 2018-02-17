@@ -1,5 +1,6 @@
 <form>
   <input type="number" class="form-control" id="title" required pattern="[0-9]+" [(ngModel)]="count" name="title" min="1" #title="ngModel">
+  <app-in-decrement-buttons (onIncrement)="incrementCount()" (onDecrement)="decrementCount()"></app-in-decrement-buttons>
   <select class="form-control" required [(ngModel)]="selectedItem" name="test">
     <option *ngFor="let item of config.availableItems" [ngValue]="item">{{item.name}}</option>
   </select>
