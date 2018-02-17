@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { OrderListItemComponent } from './order-list-item/order-list-item.component';
 import { AddOrderItemComponent } from './add-order-item/add-order-item.component';
+import { InDecrementButtonsComponent } from './in-decrement-buttons/in-decrement-buttons.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { AddOrderItemComponent } from './add-order-item/add-order-item.component
     AppComponent,
     OrderListComponent,
     OrderListItemComponent,
-    AddOrderItemComponent
+    AddOrderItemComponent,
+    InDecrementButtonsComponent
   ],
   imports: [
     BrowserModule
