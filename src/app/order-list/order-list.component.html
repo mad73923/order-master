@@ -3,15 +3,17 @@ Bestellt um: {{order.date | date:"HH:mm:ss"}}<br>
 Bezahlt: {{order.paid ? 'Ja' : 'Nein'}}
 <table class="table table-striped">
   <thead>
-    <th>#</th>
+    <th>Anzahl</th>
+    <th></th>
     <th>Name</th>
     <th class="text-right">Preis</th>
     <th>Aktion</th>
   </thead>
   <tbody>
-     <tr *ngFor="let item of order.items" [apporderlistitem]="item" (onDelete)="deleteItem(item)"></tr>
+     <tr *ngFor="let item of order.items" [apporderlistitem]="item" (onDelete)="deleteItem(item)" (onUpdate)="update_order_sum()"></tr>
 
      <tr *ngIf="order.items.length > 0">
+       <td></td>
        <td></td>
        <th>Summe</th>
        <th class="text-right">{{order_sum | currency:'EUR'}}</th>
@@ -19,3 +21,6 @@ Bezahlt: {{order.paid ? 'Ja' : 'Nein'}}
       </tr>
   </tbody>
 </table>
+
+<h4>Hinzufügen</h4>
+<app-add-order-item></app-add-order-item>

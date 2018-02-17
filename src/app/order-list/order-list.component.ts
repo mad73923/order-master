@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import {mockOrder} from '../mock-order'
 import { OrderItem } from '../order-item';
+import {mockConfig} from '../mock-config'
 
 @Component({
   selector: 'app-order-list',
@@ -11,6 +12,8 @@ import { OrderItem } from '../order-item';
 export class OrderListComponent implements OnInit {
 
   order = mockOrder;
+
+  config = mockConfig;
 
   order_sum : number;
 
@@ -29,7 +32,7 @@ export class OrderListComponent implements OnInit {
   update_order_sum(){
     let erg = 0;
     this.order.items.forEach(element => {
-      erg += element.price;
+      erg += element.price * element.count;
     });
     this.order_sum = erg;
   }

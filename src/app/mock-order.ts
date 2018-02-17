@@ -6,13 +6,13 @@ export const mockOrder: Order = {
     date: Date.now(),
     paid: false,
     items: [
-        {id: 9876,
+        {count: 2,
         name:"pizza",
         price: 4.5},
-        {id: 93468216,
+        {count: 1,
             name:"döner",
             price: 4.5},
-        {id: 93468216,
+        {count: 1,
             name:"falafel",
             price: 3.5}
     ]

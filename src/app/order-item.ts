@@ -1,5 +1,5 @@
 export class OrderItem{
-    id: number;
+    count: number;
     name: string;
     price: number;
 }

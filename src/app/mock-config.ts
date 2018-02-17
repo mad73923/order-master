@@ -1,4 +1,4 @@
-import {Pizza} from './pizza'
+import {Item} from './item'
 
 export const mockConfig = {
     availableItems: [
