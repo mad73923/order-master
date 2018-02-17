@@ -10,7 +10,7 @@ Bezahlt: {{order.paid ? 'Ja' : 'Nein'}}
     <th>Aktion</th>
   </thead>
   <tbody>
-     <tr *ngFor="let item of order.items" [apporderlistitem]="item" (onDelete)="deleteItem(item)" (onUpdate)="update_order_sum()"></tr>
+     <tr *ngFor="let item of order.items" [itemDiv]="item" (deleteClicked)="deleteItem(item)" (updateClicked)="update_order_sum()"></tr>
 
      <tr *ngIf="order.items.length > 0">
        <td></td>
@@ -23,4 +23,4 @@ Bezahlt: {{order.paid ? 'Ja' : 'Nein'}}
 </table>
 
 <h4>Hinzufügen</h4>
-<app-add-order-item (onAddItem)="add_item($event)"></app-add-order-item>
+<app-add-order-item (addItem)="add_item($event)"></app-add-order-item>

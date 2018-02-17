@@ -2,39 +2,40 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {OrderItem} from '../order-item';
 
 @Component({
-  selector: '[apporderlistitem]',
+  // tslint:disable-next-line
+  selector: '[itemDiv]',
   templateUrl: './order-list-item.component.html',
   styleUrls: ['./order-list-item.component.css']
 })
 export class OrderListItemComponent implements OnInit {
 
-  @Input('apporderlistitem')
-  item: OrderItem;
+  @Input()
+  itemDiv: OrderItem;
 
   @Output()
-  onDelete = new EventEmitter();
+  deleteClicked = new EventEmitter();
 
   @Output()
-  onUpdate = new EventEmitter();
+  updateClicked = new EventEmitter();
 
-  updated(){
-    this.onUpdate.emit();
+  updated() {
+    this.updateClicked.emit();
   }
 
-  delete(){
-    this.onDelete.emit();
+  delete() {
+    this.deleteClicked.emit();
   }
 
-  incrementCount(){
-    this.item.count ++;
+  incrementCount() {
+    this.itemDiv.count ++;
     this.updated();
   }
 
-  decrementCount(){
-    if(this.item.count>1){
-      this.item.count --;
+  decrementCount() {
+    if (this.itemDiv.count > 1) {
+      this.itemDiv.count --;
       this.updated();
-    }else{
+    } else {
       this.delete();
     }
   }

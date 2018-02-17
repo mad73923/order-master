@@ -1,6 +1,6 @@
 import {OrderItem} from './order-item';
 
-export class Order{
+export class Order {
     id: number;
     date: number;
     items: OrderItem[];

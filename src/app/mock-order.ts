@@ -7,13 +7,13 @@ export const mockOrder: Order = {
     paid: false,
     items: [
         {count: 2,
-        name:"pizza",
+        name: 'pizza',
         price: 4.5},
         {count: 1,
-            name:"döner",
+            name: 'döner',
             price: 4.5},
         {count: 1,
-            name:"falafel",
+            name: 'falafel',
             price: 3.5}
     ]
 };

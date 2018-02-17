@@ -1,26 +1,26 @@
-import {Item} from './item'
+import {Item} from './item';
 
 export const mockConfig = {
     availableItems: [
         {
-            name: "Magaritha",
+            name: 'Magaritha',
             price: 3.5,
             ingredients: [
-                "Tomatensauce", "Käse"
+                'Tomatensauce', 'Käse'
             ]
         },
         {
-            name: "Funghi",
+            name: 'Funghi',
             price: 4,
             ingredients: [
-                "Tomatensauce", "Käse", "Pilze"
+                'Tomatensauce', 'Käse', 'Pilze'
             ]
         },
         {
-            name: "Proscuitto",
+            name: 'Proscuitto',
             price: 4.5,
             ingredients: [
-                "Tomatensauce", "Käse", "Schinken"
+                'Tomatensauce', 'Käse', 'Schinken'
             ]
         }
     ]

@@ -8,17 +8,17 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class InDecrementButtonsComponent implements OnInit {
 
   @Output()
-  onDecrement = new EventEmitter();
+  decrement = new EventEmitter();
 
   @Output()
-  onIncrement = new EventEmitter();
+  increment = new EventEmitter();
 
-  decrementClicked(){
-    this.onDecrement.emit();
+  decrementClicked() {
+    this.decrement.emit();
   }
 
-  incrementClicked(){
-    this.onIncrement.emit();
+  incrementClicked() {
+    this.increment.emit();
   }
 
   constructor() { }

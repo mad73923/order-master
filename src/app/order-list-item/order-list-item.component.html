@@ -1,5 +1,5 @@
-<td class="text-center">{{item.count}}</td>
-<td><app-in-decrement-buttons (onIncrement)="incrementCount()" (onDecrement)="decrementCount()"></app-in-decrement-buttons></td>
-<td>{{item.name}}</td>
-<td class="text-right"><div *ngIf="item.count>1" class="text-left">{{item.count}}x {{item.price | currency:'EUR'}}</div>{{item.price * item.count | currency:'EUR'}}</td>
+<td class="text-center">{{itemDiv.count}}</td>
+<td><app-in-decrement-buttons (increment)="incrementCount()" (decrement)="decrementCount()"></app-in-decrement-buttons></td>
+<td>{{itemDiv.name}}</td>
+<td class="text-right"><div *ngIf="itemDiv.count>1" class="text-left">{{itemDiv.count}}x {{itemDiv.price | currency:'EUR'}}</div>{{itemDiv.price * itemDiv.count | currency:'EUR'}}</td>
 <td><button (click)="delete()" type="button" class="btn btn-danger">Löschen</button></td>
