@@ -1,1 +1,5 @@
-<input>
+<form>
+  <input type="number" class="form-control" id="title" required pattern="[0-9]+" [(ngModel)]="count" name="title" min="1" #title="ngModel">
+  <p>{{count}}</p>
+  <button type="submit" class="btn" [disabled]="!title.valid">Hinzufügen</button>
+</form>
