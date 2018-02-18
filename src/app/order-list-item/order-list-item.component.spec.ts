@@ -25,13 +25,13 @@ describe('OderListItemComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should emit delete event', (done) => {
-    component.deleteClicked.subscribe(() =>{
+    component.deleteClicked.subscribe(() => {
       done();
     });
     component.delete();
   });
   it('should emit update event', (done) => {
-    component.updateClicked.subscribe(() =>{
+    component.updateClicked.subscribe(() => {
       done();
     });
     component.updated();
@@ -45,7 +45,7 @@ describe('OderListItemComponent', () => {
     component.itemDiv = {count: 2, name: 'test', price: 88};
     component.decrementCount();
     expect(component.itemDiv.count).toEqual(1);
-    component.deleteClicked.subscribe(() =>{
+    component.deleteClicked.subscribe(() => {
       done();
     });
     component.decrementCount();
