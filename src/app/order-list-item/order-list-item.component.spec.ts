@@ -24,4 +24,30 @@ describe('OderListItemComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should emit delete event', (done) => {
+    component.deleteClicked.subscribe(() =>{
+      done();
+    });
+    component.delete();
+  });
+  it('should emit update event', (done) => {
+    component.updateClicked.subscribe(() =>{
+      done();
+    });
+    component.updated();
+  });
+  it('should increment item count', () => {
+    component.itemDiv = {count: 1, name: 'test', price: 88};
+    component.incrementCount();
+    expect(component.itemDiv.count).toEqual(2);
+  });
+  it('should decrement item count', (done) => {
+    component.itemDiv = {count: 2, name: 'test', price: 88};
+    component.decrementCount();
+    expect(component.itemDiv.count).toEqual(1);
+    component.deleteClicked.subscribe(() =>{
+      done();
+    });
+    component.decrementCount();
+  });
 });
