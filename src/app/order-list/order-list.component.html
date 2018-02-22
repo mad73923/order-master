@@ -1,6 +1,5 @@
-<h2>Bestellung Nummer: {{order.id}}</h2>
-Bestellt um: {{order.date | date:"HH:mm:ss"}}<br>
-Bezahlt: {{order.paid ? 'Ja' : 'Nein'}}
+<h2>Neue Bestellung</h2>
+Bezahlt: {{paid ? 'Ja' : 'Nein'}}
 <table class="table table-striped">
   <thead>
     <th>Anzahl</th>
@@ -10,14 +9,14 @@ Bezahlt: {{order.paid ? 'Ja' : 'Nein'}}
     <th>Aktion</th>
   </thead>
   <tbody>
-     <tr *ngFor="let item of order.items" [itemDiv]="item" (deleteClicked)="deleteItem(item)" (updateClicked)="update_order_sum()"></tr>
+     <tr *ngFor="let item of items" [itemDiv]="item" (deleteClicked)="deleteItem(item)" (updateClicked)="update_order_sum()"></tr>
 
-     <tr *ngIf="order.items.length > 0">
+     <tr *ngIf="items.length > 0">
        <td></td>
        <td></td>
        <th>Summe</th>
-       <th class="text-right">{{order_sum | currency:'EUR'}}</th>
-       <td><button (click)="paid()" type="button" class="btn btn-warning" *ngIf="!order.paid">Bezahlen</button></td>
+       <th class="text-right">{{sum | currency:'EUR'}}</th>
+       <td><button (click)="pay()" type="button" class="btn btn-warning" *ngIf="!paid">Bezahlen</button></td>
       </tr>
   </tbody>
 </table>

@@ -1,5 +1,5 @@
-import {Order} from './order';
-import { OrderItem } from './order-item';
+import {Order} from '../shared/order';
+import { OrderItem } from '../shared/order-item';
 
 export const mockOrder: Order = {
     id: 1234,

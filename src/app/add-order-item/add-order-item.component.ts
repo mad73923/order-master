@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
-import {mockConfig } from '../mock-config';
-import { OrderItem } from '../order-item';
+import {mockConfig } from '../../mock/mock-config';
+import { OrderItem } from '../../shared/order-item';
 
 @Component({
   selector: 'app-add-order-item',
