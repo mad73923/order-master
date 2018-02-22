@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import {mockOrder} from '../../mock/mock-order';
 import { OrderItem } from '../../shared/order-item';
-import {OrderClass} from '../model_classes/order_class'
+import {OrderClass} from '../model_classes/order_class';
 import {mockConfig} from '../../mock/mock-config';
 
 @Component({
@@ -14,7 +14,7 @@ export class OrderListComponent extends OrderClass implements OnInit {
 
   config = mockConfig;
 
-  constructor(){
+  constructor() {
     super();
   }
 

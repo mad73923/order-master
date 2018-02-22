@@ -1,7 +1,7 @@
 import {Order} from '../../shared/order';
 import {OrderItem} from '../../shared/order-item';
 
-export class OrderClass extends Order{
+export class OrderClass extends Order {
     sum: number;
 
     constructor() {
@@ -18,11 +18,11 @@ export class OrderClass extends Order{
         }
         this.update_order_sum();
       }
-    
+
       pay() {
         this.paid = true;
       }
-    
+
       update_order_sum() {
         let erg = 0;
         this.items.forEach(element => {
@@ -30,9 +30,9 @@ export class OrderClass extends Order{
         });
         this.sum = erg;
       }
-    
+
       add_item(item: OrderItem) {
         this.items.push(item);
         this.update_order_sum();
       }
-};
+}

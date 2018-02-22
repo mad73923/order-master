@@ -5,4 +5,4 @@ export class Order {
     date: number;
     items: OrderItem[];
     paid: boolean;
-};
+}
