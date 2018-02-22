@@ -1,5 +1,3 @@
-import {Item} from './item';
-
 export const mockConfig = {
     availableItems: [
         {

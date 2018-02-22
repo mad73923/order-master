@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import {mockOrder} from '../mock-order';
-import { OrderItem } from '../order-item';
-import {mockConfig} from '../mock-config';
+import {mockOrder} from '../../mock/mock-order';
+import { OrderItem } from '../../shared/order-item';
+import {OrderClass} from '../model_classes/order_class'
+import {mockConfig} from '../../mock/mock-config';
 
 @Component({
   selector: 'app-order-list',
@@ -11,38 +12,33 @@ import {mockConfig} from '../mock-config';
 })
 export class OrderListComponent implements OnInit {
 
-  order = mockOrder;
+  order: OrderClass;
 
   config = mockConfig;
 
   order_sum: number;
 
   deleteItem(item: OrderItem) {
-    const index = this.order.items.indexOf(item, 0);
-    if (index > -1) {
-      this.order.items.splice(index, 1);
-    }
-    this.update_order_sum();
+    this.order.deleteItem(item);
   }
 
   paid() {
-    this.order.paid = true;
+    this.order.pay();
   }
 
   update_order_sum() {
-    let erg = 0;
-    this.order.items.forEach(element => {
-      erg += element.price * element.count;
-    });
-    this.order_sum = erg;
+    this.order.update_order_sum();
   }
 
   add_item(item: OrderItem) {
-    this.order.items.push(item);
-    this.update_order_sum();
+    this.order.add_item(item);
   }
 
-  constructor() { }
+  constructor() {
+    this.order = new OrderClass();
+    this.order.items = [];
+    this.order.paid = false;
+   }
 
   ngOnInit() {
     this.update_order_sum();

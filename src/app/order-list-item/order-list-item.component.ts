@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {OrderItem} from '../order-item';
+import {OrderItem} from '../../shared/order-item';
 
 @Component({
   // tslint:disable-next-line
