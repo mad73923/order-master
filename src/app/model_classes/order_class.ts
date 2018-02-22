@@ -8,6 +8,7 @@ export class OrderClass extends Order{
         super();
         this.items = [];
         this.paid = false;
+        this.sum = 0;
        }
 
     deleteItem(item: OrderItem) {

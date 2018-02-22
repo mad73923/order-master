@@ -33,9 +33,8 @@ describe('OrderListComponent', () => {
     const test1 = {count: 1, name: 'Pizza', price: 66};
     const test2 = {count: 1, name: 'Pizza', price: 55};
     component.add_item(test1);
-    component.add_item(test2);
     // TODO dependency to test above
-    expect(component.items.length).toEqual(2);
+    expect(component.items.length).toEqual(1);
     component.deleteItem(test2);
     expect(component.items.length).toEqual(1);
     component.deleteItem(test1);
