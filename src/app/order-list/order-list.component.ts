@@ -10,35 +10,13 @@ import {mockConfig} from '../../mock/mock-config';
   templateUrl: './order-list.component.html',
   styleUrls: ['./order-list.component.css']
 })
-export class OrderListComponent implements OnInit {
-
-  order: OrderClass;
+export class OrderListComponent extends OrderClass implements OnInit {
 
   config = mockConfig;
 
-  order_sum: number;
-
-  deleteItem(item: OrderItem) {
-    this.order.deleteItem(item);
+  constructor(){
+    super();
   }
-
-  paid() {
-    this.order.pay();
-  }
-
-  update_order_sum() {
-    this.order.update_order_sum();
-  }
-
-  add_item(item: OrderItem) {
-    this.order.add_item(item);
-  }
-
-  constructor() {
-    this.order = new OrderClass();
-    this.order.items = [];
-    this.order.paid = false;
-   }
 
   ngOnInit() {
     this.update_order_sum();

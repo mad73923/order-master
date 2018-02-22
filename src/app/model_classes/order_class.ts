@@ -4,6 +4,12 @@ import {OrderItem} from '../../shared/order-item';
 export class OrderClass extends Order{
     sum: number;
 
+    constructor() {
+        super();
+        this.items = [];
+        this.paid = false;
+       }
+
     deleteItem(item: OrderItem) {
         const index = this.items.indexOf(item, 0);
         if (index > -1) {
