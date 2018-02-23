@@ -4,6 +4,7 @@ import {mockOrder} from '../../mock/mock-order';
 import { OrderItem } from '../../shared/order-item';
 import {OrderClass} from '../model_classes/order_class';
 import {mockConfig} from '../../mock/mock-config';
+import { OrderService } from '../order.service';
 
 @Component({
   selector: 'app-order-list',
@@ -17,7 +18,7 @@ export class OrderListComponent extends OrderClass implements OnInit {
 
   config = mockConfig;
 
-  constructor() {
+  constructor(service: OrderService) {
     super();
   }
 
