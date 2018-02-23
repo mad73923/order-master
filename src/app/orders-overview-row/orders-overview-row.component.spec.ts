@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OrdersOverviewRowComponent } from './orders-overview-row.component';
+import { Order } from '../../shared/order';
 
 describe('OrdersOverviewRowComponent', () => {
   let component: OrdersOverviewRowComponent;

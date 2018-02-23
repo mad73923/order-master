@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OrdersOverviewComponent } from './orders-overview.component';
+import { OrdersOverviewRowComponent } from '../orders-overview-row/orders-overview-row.component'
+import { OrderService } from '../order.service';
 
 describe('OrdersOverviewComponent', () => {
   let component: OrdersOverviewComponent;
@@ -8,7 +10,8 @@ describe('OrdersOverviewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OrdersOverviewComponent ]
+      declarations: [ OrdersOverviewComponent, OrdersOverviewRowComponent ],
+      providers: [OrderService]
     })
     .compileComponents();
   }));

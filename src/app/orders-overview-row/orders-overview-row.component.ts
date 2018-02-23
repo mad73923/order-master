@@ -16,7 +16,7 @@ export class OrdersOverviewRowComponent implements OnInit {
   number_items: number;
   waiting_time: number;
 
-  obs;
+  obs: any;
 
   constructor() { 
   }
@@ -24,10 +24,12 @@ export class OrdersOverviewRowComponent implements OnInit {
   private update_fields(){
     this.sum = 0;
     this.number_items = 0;
-    this.orderDiv.items.forEach((item) => {
-      this.sum += item.count * item.price;
-      this.number_items += item.count;
-    });
+    if(this.orderDiv.items){
+      this.orderDiv.items.forEach((item) => {
+        this.sum += item.count * item.price;
+        this.number_items += item.count;
+      });
+    }
   }
 
   ngOnInit() {
