@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import {mockOrder} from '../../mock/mock-order';
 import { OrderItem } from '../../shared/order-item';
 import {OrderClass} from '../model_classes/order_class';
 import {mockConfig} from '../../mock/mock-config';
+import { OrderService } from '../order.service';
 
 @Component({
   selector: 'app-order-list',
@@ -12,9 +13,12 @@ import {mockConfig} from '../../mock/mock-config';
 })
 export class OrderListComponent extends OrderClass implements OnInit {
 
+  @Input()
+  editable: boolean;
+
   config = mockConfig;
 
-  constructor() {
+  constructor(service: OrderService) {
     super();
   }
 

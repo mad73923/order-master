@@ -12,6 +12,9 @@ export class OrderListItemComponent implements OnInit {
   @Input()
   itemDiv: OrderItem;
 
+  @Input()
+  editable: boolean;
+
   @Output()
   deleteClicked = new EventEmitter();
 

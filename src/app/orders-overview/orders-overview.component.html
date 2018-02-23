@@ -1,0 +1,13 @@
+<h2>Bestellung Übersicht</h2>
+<table class="table table-striped">
+  <thead>
+    <th>Nummer</th>
+    <th>Anzahl Teile</th>
+    <th class="text-right">Summe</th>
+    <th>Wartezeit</th>
+    <th>Aktion</th>
+  </thead>
+  <tbody>
+      <tr *ngFor="let order of orders" [orderDiv]="order"></tr>    
+  </tbody>
+</table>
