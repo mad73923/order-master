@@ -35,7 +35,8 @@ export class OrdersOverviewRowComponent implements OnInit {
   ngOnInit() {
     this.update_fields();
     this.waiting_time = 0;
-    this.obs = IntervalObservable.create(1000).subscribe(() => {
+    this.obs = IntervalObservable.create(1000);
+    this.obs.subscribe(() => {
       this.waiting_time = Date.now() - this.orderDiv.date;
     });
   }
