@@ -19,3 +19,7 @@ Bezahlt: {{paid ? 'Ja' : 'Nein'}}
       </tr>
   </tbody>
 </table>
+<div *ngIf="editable">
+  <h4>Hinzufügen</h4>
+  <app-add-order-item (addItem)="add_item($event)"></app-add-order-item>
+</div>
