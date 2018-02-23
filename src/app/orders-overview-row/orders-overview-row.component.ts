@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Order } from '../../shared/order';
-import { Observable } from 'rxjs/Observable';
+import {IntervalObservable} from 'rxjs/observable/IntervalObservable';
 
 @Component({
   selector: '[orderDiv]',
@@ -16,12 +16,14 @@ export class OrdersOverviewRowComponent implements OnInit {
   number_items: number;
   waiting_time: number;
 
+  obs;
+
   constructor() { 
   }
 
   private update_fields(){
     this.sum = 0;
-    this.number_items = 0;    
+    this.number_items = 0;
     this.orderDiv.items.forEach((item) => {
       this.sum += item.count * item.price;
       this.number_items += item.count;
@@ -31,6 +33,13 @@ export class OrdersOverviewRowComponent implements OnInit {
   ngOnInit() {
     this.update_fields();
     this.waiting_time = 0;
+    this.obs = IntervalObservable.create(1000).subscribe(() => {
+      this.waiting_time = Date.now() - this.orderDiv.date;
+    });
+  }
+
+  ngOnDestroy(){
+    this.obs.unsubscribe();
   }
 
 }
