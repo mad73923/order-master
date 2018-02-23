@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import {mockOrder} from '../../mock/mock-order';
 import { OrderItem } from '../../shared/order-item';
@@ -11,6 +11,9 @@ import {mockConfig} from '../../mock/mock-config';
   styleUrls: ['./order-list.component.css']
 })
 export class OrderListComponent extends OrderClass implements OnInit {
+
+  @Input()
+  editable: boolean;
 
   config = mockConfig;
 
