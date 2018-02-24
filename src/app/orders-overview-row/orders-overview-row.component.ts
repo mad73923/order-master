@@ -33,17 +33,20 @@ export class OrdersOverviewRowComponent implements OnInit, OnDestroy {
     }
   }
 
+  private update_waiting_time() {
+    this.waiting_time = Date.now() - this.orderDiv.date;
+  }
+
   ngOnInit() {
     this.update_fields();
-    this.waiting_time = 0;
+    this.update_waiting_time();
     this.obs = IntervalObservable.create(1000);
     this.obs.subscribe(() => {
-      this.waiting_time = Date.now() - this.orderDiv.date;
+      this.update_waiting_time();
     });
   }
 
   ngOnDestroy() {
-    this.obs.unsubscribe();
   }
 
 }

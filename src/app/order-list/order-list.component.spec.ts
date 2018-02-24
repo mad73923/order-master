@@ -4,17 +4,28 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { OrderListComponent } from './order-list.component';
 import { OrderListItemComponent } from '../order-list-item/order-list-item.component';
 import { OrderService } from '../order.service';
+import { Order } from '../../shared/order';
+
+class FakeService {
+  new_Order(order: Order) {
+
+  }
+
+  get_Active_Orders() {
+
+  }
+}
 
 describe('OrderListComponent', () => {
   let component: OrderListComponent;
   let fixture: ComponentFixture<OrderListComponent>;
 
   beforeEach(async(() => {
+    TestBed.overrideComponent(OrderListComponent, {set: {providers: [{provide: OrderService, useClass: FakeService}]}});
     TestBed.configureTestingModule({
       declarations: [ OrderListComponent, OrderListItemComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      providers: [OrderService]
-    })
+      providers: [OrderService]})
     .compileComponents();
   }));
 
@@ -46,5 +57,8 @@ describe('OrderListComponent', () => {
     expect(component.paid).toEqual(false);
     component.pay();
     expect(component.paid).toEqual(true);
+  });
+  it('should call service new order', () => {
+    component.submit_order();
   });
 });
