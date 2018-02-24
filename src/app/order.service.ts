@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 import { Order } from '../shared/order';
 
 @Injectable()
@@ -6,7 +8,7 @@ export class OrderService {
 
   activeOrders: Order[];
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.activeOrders = [];
     this.activeOrders.push({id: 1234, date: Date.now(), paid: true, items: [{count: 3, name: 'Döner', price: 4.5},
     {count: 1, name: 'Pizza', price: 4.5}]});
@@ -18,7 +20,15 @@ export class OrderService {
   }
 
   new_Order(order: Order) {
-    this.activeOrders.push(order);
+    const uri = 'http://localhost:4000/api/orders/add';
+    const obj = {
+      id: order.id,
+      date: order.date,
+      paid: order.paid,
+      items: order.items
+    };
+    this.http.post(uri, obj)
+             .subscribe(res => console.log(res));
   }
 
 }

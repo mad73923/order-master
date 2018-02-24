@@ -11,7 +11,12 @@ mongoose.connect(config.DB).then(
 );
 
 const app = express();
+app.use(bodyParser.json());
+app.use(cors());
 var port = process.env.PORT || 4000;
+var orderRoutes = require('./routes/order_routes');
+
+app.use('/api/orders', orderRoutes);
 
 var server = app.listen(port, () => {
     console.log('DB server listening in port ' + port);

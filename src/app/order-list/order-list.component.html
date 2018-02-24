@@ -24,4 +24,4 @@ Bezahlt: {{paid ? 'Ja' : 'Nein'}}
   <app-add-order-item (addItem)="add_item($event)"></app-add-order-item>
 </div>
 <br>
-<button class="btn btn-primary">Bestellen</button>
+<button class="btn btn-primary" (click)="submit_order()">Bestellen</button>
