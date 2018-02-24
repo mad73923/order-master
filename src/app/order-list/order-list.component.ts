@@ -27,7 +27,7 @@ export class OrderListComponent extends OrderClass implements OnInit {
     this.update_order_sum();
   }
 
-  submit_order(){
+  submit_order() {
     this.service.new_Order(this as Order);
   }
 

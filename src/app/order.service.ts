@@ -13,7 +13,7 @@ export class OrderService {
   }
 
   get_Active_Orders(): Observable<Object> {
-    const uri = baseURI+ 'orders/active';
+    const uri = baseURI + 'orders/active';
     return this.http.get(uri);
   }
 

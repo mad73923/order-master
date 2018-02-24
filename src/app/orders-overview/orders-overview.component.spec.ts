@@ -7,13 +7,13 @@ import { Order } from '../../shared/order';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
-class fakeService{
-  new_Order(order: Order){
+class FakeService {
+  new_Order(order: Order) {
 
   }
 
-  get_Active_Orders():Observable<Order[]>{
-    return Observable.of([{id: 123, date: 434, items:[], paid:false}]);
+  get_Active_Orders(): Observable<Order[]> {
+    return Observable.of([{id: 123, date: 434, items: [], paid: false}]);
   }
 }
 
@@ -22,7 +22,7 @@ describe('OrdersOverviewComponent', () => {
   let fixture: ComponentFixture<OrdersOverviewComponent>;
 
   beforeEach(async(() => {
-    TestBed.overrideComponent(OrdersOverviewComponent, {set:{providers:[{provide: OrderService, useClass: fakeService}]}});
+    TestBed.overrideComponent(OrdersOverviewComponent, {set: {providers: [{provide: OrderService, useClass: FakeService}]}});
     TestBed.configureTestingModule({
       declarations: [ OrdersOverviewComponent, OrdersOverviewRowComponent ],
       providers: [OrderService]})

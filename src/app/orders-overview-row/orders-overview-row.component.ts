@@ -33,7 +33,7 @@ export class OrdersOverviewRowComponent implements OnInit, OnDestroy {
     }
   }
 
-  private update_waiting_time(){
+  private update_waiting_time() {
     this.waiting_time = Date.now() - this.orderDiv.date;
   }
 

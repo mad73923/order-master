@@ -6,12 +6,12 @@ import { OrderListItemComponent } from '../order-list-item/order-list-item.compo
 import { OrderService } from '../order.service';
 import { Order } from '../../shared/order';
 
-class fakeService{
-  new_Order(order: Order){
+class FakeService {
+  new_Order(order: Order) {
 
   }
 
-  get_Active_Orders(){
+  get_Active_Orders() {
 
   }
 }
@@ -21,7 +21,7 @@ describe('OrderListComponent', () => {
   let fixture: ComponentFixture<OrderListComponent>;
 
   beforeEach(async(() => {
-    TestBed.overrideComponent(OrderListComponent, {set:{providers:[{provide: OrderService, useClass: fakeService}]}});
+    TestBed.overrideComponent(OrderListComponent, {set: {providers: [{provide: OrderService, useClass: FakeService}]}});
     TestBed.configureTestingModule({
       declarations: [ OrderListComponent, OrderListItemComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],

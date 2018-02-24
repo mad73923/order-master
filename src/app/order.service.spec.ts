@@ -5,19 +5,19 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
-class fakeHttpClientModule{
-  post():Observable<any>{
+class FakeHttpClientModule {
+  post(): Observable<any> {
     return  Observable.of('test');
   }
 
-  get(){
+  get() {
   }
 }
 
 describe('OrderService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [OrderService, {provide: HttpClient, useClass: fakeHttpClientModule}]
+      providers: [OrderService, {provide: HttpClient, useClass: FakeHttpClientModule}]
     });
   });
 
