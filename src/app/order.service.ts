@@ -24,8 +24,10 @@ export class OrderService {
       paid: order.paid,
       items: order.items
     };
+    // todo error handling not in service!
     this.http.post(uri, obj)
-             .subscribe(res => console.log(res));
+             .subscribe(res => {console.log(res)},
+                        err => {console.log(err)});
   }
 
 }

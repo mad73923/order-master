@@ -17,6 +17,8 @@ export class OrdersOverviewComponent implements OnInit {
   ngOnInit() {
     this.service.get_Active_Orders().subscribe(res => {
       this.orders = res as Order[];
+    }, err =>{
+      console.log(err);
     });
   }
 
