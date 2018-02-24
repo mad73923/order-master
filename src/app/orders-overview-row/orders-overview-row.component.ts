@@ -47,7 +47,6 @@ export class OrdersOverviewRowComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.obs.unsubscribe();
   }
 
 }
