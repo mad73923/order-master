@@ -5,6 +5,7 @@ import { OrderItem } from '../../shared/order-item';
 import {OrderClass} from '../model_classes/order_class';
 import {mockConfig} from '../../mock/mock-config';
 import { OrderService } from '../order.service';
+import { Order } from '../../shared/order';
 
 @Component({
   selector: 'app-order-list',
@@ -18,12 +19,16 @@ export class OrderListComponent extends OrderClass implements OnInit {
 
   config = mockConfig;
 
-  constructor(service: OrderService) {
+  constructor(private service: OrderService) {
     super();
   }
 
   ngOnInit() {
     this.update_order_sum();
+  }
+
+  submit_order(){
+    this.service.new_Order(this as Order);
   }
 
 }

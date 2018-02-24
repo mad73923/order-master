@@ -1,24 +1,31 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 import { Order } from '../shared/order';
+import { Observable } from 'rxjs/Observable';
+
+const baseURI = 'http://localhost:4000/api/';
 
 @Injectable()
 export class OrderService {
 
-  activeOrders: Order[];
-
-  constructor() {
-    this.activeOrders = [];
-    this.activeOrders.push({id: 1234, date: Date.now(), paid: true, items: [{count: 3, name: 'Döner', price: 4.5},
-    {count: 1, name: 'Pizza', price: 4.5}]});
-    this.activeOrders.push({id: 634, date: Date.now(), paid: true, items: [{count: 2, name: 'Pizza', price: 4.5}]});
+  constructor(private http: HttpClient) {
   }
 
-  get_Active_Orders(): Order[] {
-    return this.activeOrders;
+  get_Active_Orders(): Observable<Object> {
+    const uri = baseURI+ 'orders/active';
+    return this.http.get(uri);
   }
 
   new_Order(order: Order) {
-    this.activeOrders.push(order);
+    const uri = baseURI + 'orders/add';
+    const obj = {
+      date: order.date,
+      paid: order.paid,
+      items: order.items
+    };
+    this.http.post(uri, obj)
+             .subscribe(res => console.log(res));
   }
 
 }
