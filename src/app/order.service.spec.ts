@@ -7,7 +7,7 @@ import 'rxjs/add/observable/of';
 
 class fakeHttpClientModule{
   post():Observable<any>{
-    return  Observable.of();
+    return  Observable.of('test');
   }
 
   get(){
