@@ -16,4 +16,14 @@ orderRoutes.route('/add').post((req, res) => {
         });
 });
 
+orderRoutes.route('/active').get((req, res) => {
+    Order.find((err, orders) =>{
+        if(err){
+            console.log(err);
+        }else{
+            res.json(orders);
+        }
+    });
+});
+
 module.exports = orderRoutes;
