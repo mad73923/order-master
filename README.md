@@ -27,6 +27,11 @@ For testing, the CHROME_BIN env must be set:
 export CHROME_BIN=/usr/bin/chromium-browser
 ```
 
+### Code coverage
+
+Run `ng test --cc` to generate coverage report. Navigate to `./coverage/index.html` with your browser of choice to check the report.
+
+Only code with 100% coverage will be accepted on master branch.
 
 ## Running end-to-end tests
 
