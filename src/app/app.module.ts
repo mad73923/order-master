@@ -12,7 +12,8 @@ import { NewOrderComponent } from './new-order/new-order.component';
 import { OrderService } from './order.service';
 import { OrdersOverviewComponent } from './orders-overview/orders-overview.component';
 import { OrdersOverviewRowComponent } from './orders-overview-row/orders-overview-row.component';
-import { UierrorHandlerService } from './uierror-handler.service'
+import { UierrorHandlerService } from './uierror-handler.service';
+import { StageComponent } from './stage/stage.component'
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { UierrorHandlerService } from './uierror-handler.service'
     InDecrementButtonsComponent,
     NewOrderComponent,
     OrdersOverviewComponent,
-    OrdersOverviewRowComponent
+    OrdersOverviewRowComponent,
+    StageComponent
   ],
   imports: [
     BrowserModule,
