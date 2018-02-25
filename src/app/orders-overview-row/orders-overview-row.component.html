@@ -1,5 +1,6 @@
 <td>{{orderDiv.id}}</td>
 <td>{{number_items}}</td>
 <td class="text-right">{{sum | currency:'EUR'}}</td>
+<td>{{orderDiv.paid ? 'Ja' : '' }}</td>
 <td>{{waiting_time | date:'HH:mm:ss':'+0000'}}</td>
 <td></td>
