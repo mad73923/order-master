@@ -14,56 +14,54 @@ export class StageComponent implements OnInit {
   stageNumber: number;
 
   private orders: Order[];
-  private relevantOrders: Order[];
-  private relevantItems: OrderItem[];
   private number_items: number;
 
-  constructor(private service: OrderService) { }
+  constructor(private service: OrderService) { 
+    this.orders = [];
+  }
 
   ngOnInit() {
     this.updateOrders();
   }
 
   private updateOrders(){
-    this.relevantOrders = [];
-    this.relevantItems = [];
     this.number_items = 0;
     this.service.get_Active_Orders().subscribe(res =>{
       this.orders = res as Order[];
-      this.filterOrders();      
+      this.filterOrders();
     });
   }
 
   private filterOrders(){
-    this.orders.forEach(order =>{
-      if(this.isRelevantOrder(order)){
-        this.relevantOrders.push(order);
+    let new_orders = [];
+    this.orders.forEach((order, index) =>{
+      this.filterItems(order);
+      if(order.items.length > 0){
+        new_orders.push(order);
       }
     });
+    this.orders = new_orders;
   }
 
-  private isRelevantOrder(order: Order): boolean{
-    let ret = false;
-    order.items.forEach(item => {
+  private filterItems(order: Order){
+    let new_items = [];
+    order.items.forEach((item, index) => {
       if(this.isRelevantItem(item)){
-        this.relevantItems.push(item);
         this.number_items += item.count;
-        ret = true;
-        return;
+        new_items.push(item);
       }
     });
-    return ret;
+    order.items = new_items;
   }
 
   private isRelevantItem(item: OrderItem): boolean{
-    let ret = false;
     if(this.stageNumber === 0 && item.stages.length === 0 ){
       return true;
     }
     if(this.get_maximum_stage(item.stages) === this.stageNumber -1){
-      ret = true;
+      return true;
     }
-    return ret;
+    return false;
   }
 
   private get_maximum_stage(stages): number{
