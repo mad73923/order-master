@@ -28,15 +28,17 @@ export class OrderListComponent extends OrderClass implements OnInit {
 
   submit_order() {
     let new_items: OrderItem[] = [];
-    this.items.forEach(item =>{
+    let new_order: OrderClass = Object.assign({}, this);
+    new_order.items.forEach(item =>{
       let count = item.count;
-      item.count = 1;
+      let new_item = Object.assign({}, item);
+      new_item.count = 1;
       for(let i=0; i<count; i++){
-        new_items.push(item);
+        new_items.push(new_item);
       }
     });
-    this.items = new_items;
-    this.service.new_Order(this as Order);
+    new_order.items = new_items;
+    this.service.new_Order(new_order as Order);
   }
 
 }
