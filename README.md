@@ -10,6 +10,10 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `npm run db` for the dev database server at port 4000. Be sure to start a mongod service locally before.
 
+### Mongod
+
+Run `npm run dbdaemon` to start the DB daemon. The path might have to be adapted.
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
