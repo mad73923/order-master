@@ -8,12 +8,15 @@ export const mockOrder: Order = {
     items: [
         {count: 2,
         name: 'pizza',
-        price: 4.5},
+        price: 4.5,
+        stages: []},
         {count: 1,
             name: 'döner',
-            price: 4.5},
+            price: 4.5,
+            stages: []},
         {count: 1,
             name: 'falafel',
-            price: 3.5}
+            price: 3.5,
+            stages: []}
     ]
 };

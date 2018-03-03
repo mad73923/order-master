@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Order } from '../shared/order';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
+import { OrderItem } from '../shared/order-item';
 
 const baseURI = 'http://localhost:4000/api/';
 
@@ -33,6 +34,13 @@ export class OrderService {
     this.http.post(uri, obj)
              .subscribe(res => {console.log(res)},
                         err => {console.log(err)});
+  }
+
+  update_item(item: OrderItem){
+    const uri = baseURI + 'orders/item';
+    this.http.put(uri, item)
+            .subscribe(res =>{console.log(res)},
+                        err =>{console.log(err)});
   }
 
 }

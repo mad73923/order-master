@@ -1,4 +1,5 @@
 export class OrderItem {
+    _id: string;
     count: number;
     name: string;
     price: number;
