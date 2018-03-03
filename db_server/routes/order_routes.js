@@ -33,10 +33,7 @@ orderRoutes.route('/active').get((req, res) => {
 });
 
 orderRoutes.route('/item').put((req, res) => {
-    //console.log(req.body);
-    //console.log(new mongodb.ObjectId(req.body._id));
     Order.findOne({'items._id': new mongodb.ObjectId(req.body._id)}, (err, order) =>{
-        //console.log(order);
         if(err)
             console.error(err);
         let ind = findItemIndex(order, req.body);

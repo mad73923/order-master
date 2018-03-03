@@ -57,20 +57,24 @@ export class StageComponent implements OnInit {
 
   private isRelevantItem(item: OrderItem): boolean{
     let ret = false;
-    if(item.stages){
-      if(this.stageNumber === 0 && item.stages.length === 0 ){
-        return true;
-      }
-      item.stages.forEach(stage =>{
-        if (stage.id === this.stageNumber-1){
-          ret = true;
-          return;
-        }
-      });
-    }else if(this.stageNumber === 0){
+    if(this.stageNumber === 0 && item.stages.length === 0 ){
+      return true;
+    }
+    if(this.get_maximum_stage(item.stages) === this.stageNumber -1){
       ret = true;
     }
     return ret;
+  }
+
+  private get_maximum_stage(stages): number{
+    if(stages.length === 0){
+      return -1;
+    }
+    let maxi = stages[0].id;
+    stages.forEach(item => {
+      maxi = Math.max(maxi, item.id);
+    });
+    return maxi;
   }
 
   private stageCompleted(item: OrderItem){
