@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import {mockOrder} from '../../mock/mock-order';
 import { OrderItem } from '../../shared/order-item';
 import {OrderClass} from '../model_classes/order_class';
 import {mockConfig} from '../../mock/mock-config';
