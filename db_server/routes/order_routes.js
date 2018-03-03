@@ -37,7 +37,6 @@ orderRoutes.route('/item').put((req, res) => {
         if(err)
             console.error(err);
         let ind = findItemIndex(order, req.body);
-        console.log(ind);
         if(ind >= 0){
             order.items[ind] = req.body;
             order.save()
@@ -54,7 +53,6 @@ function findItemIndex(order, item){
     let ind = -1;
     item._id = new mongodb.ObjectId(item._id);
     order.items.forEach((element, index) => {
-        console.log(element._id, item._id);
         if(element._id.equals(item._id)){
             ind = index;
             return;
