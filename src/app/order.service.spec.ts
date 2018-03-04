@@ -11,6 +11,7 @@ class FakeHttpClientModule {
   }
 
   get() {
+    return {catch: ()=> {}};
   }
 }
 
