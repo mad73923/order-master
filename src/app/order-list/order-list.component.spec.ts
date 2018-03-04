@@ -59,6 +59,7 @@ describe('OrderListComponent', () => {
     expect(component.paid).toEqual(true);
   });
   it('should call service new order', () => {
+    component.items = [mockDiv];
     component.submit_order();
   });
 });

@@ -75,7 +75,7 @@ export class StageComponent implements OnInit {
     return maxi;
   }
 
-  private stageCompleted(item: OrderItem){
+  public stageCompleted(item: OrderItem){
     item.stages.push({id: this.stageNumber, timestamp: Date.now()})
     this.service.update_item(item);
   }
