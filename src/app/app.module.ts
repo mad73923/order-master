@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -12,6 +12,8 @@ import { NewOrderComponent } from './new-order/new-order.component';
 import { OrderService } from './order.service';
 import { OrdersOverviewComponent } from './orders-overview/orders-overview.component';
 import { OrdersOverviewRowComponent } from './orders-overview-row/orders-overview-row.component';
+import { UierrorHandlerService } from './uierror-handler.service';
+import { StageComponent } from './stage/stage.component';
 
 
 @NgModule({
@@ -23,7 +25,8 @@ import { OrdersOverviewRowComponent } from './orders-overview-row/orders-overvie
     InDecrementButtonsComponent,
     NewOrderComponent,
     OrdersOverviewComponent,
-    OrdersOverviewRowComponent
+    OrdersOverviewRowComponent,
+    StageComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,7 @@ import { OrdersOverviewRowComponent } from './orders-overview-row/orders-overvie
     HttpClientModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [OrderService],
+  providers: [OrderService, {provide: ErrorHandler, useClass: UierrorHandlerService}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

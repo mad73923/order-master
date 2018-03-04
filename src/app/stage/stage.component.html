@@ -1,0 +1,17 @@
+<h2>Stufe {{stageNumber}}</h2>
+
+Offene Bestellungen: {{orders.length}}
+<br>
+Offene Teile: {{number_items}}
+<br>
+
+<ul>
+    <li *ngFor="let order of orders">
+        Bestellung {{order.id}}
+        <ul>
+            <li *ngFor="let item of order.items">
+                {{item.name}} <button class="btn" (click)="stageCompleted(item)">Fertig</button>
+            </li>
+        </ul>
+    </li>
+</ul>
