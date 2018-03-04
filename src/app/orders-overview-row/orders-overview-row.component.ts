@@ -15,9 +15,6 @@ export class OrdersOverviewRowComponent implements OnInit, OnDestroy {
 
   sum: number;
   number_items: number;
-  waiting_time: number;
-
-  obs: any;
 
   constructor() {
   }
@@ -33,17 +30,8 @@ export class OrdersOverviewRowComponent implements OnInit, OnDestroy {
     }
   }
 
-  private update_waiting_time() {
-    this.waiting_time = Date.now() - this.orderDiv.date;
-  }
-
   ngOnInit() {
     this.update_fields();
-    this.update_waiting_time();
-    this.obs = IntervalObservable.create(1000);
-    this.obs.subscribe(() => {
-      this.update_waiting_time();
-    });
   }
 
   ngOnDestroy() {
