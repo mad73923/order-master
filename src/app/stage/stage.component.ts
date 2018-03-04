@@ -16,7 +16,7 @@ export class StageComponent implements OnInit {
   private orders: Order[];
   private number_items: number;
 
-  constructor(private service: OrderService) { 
+  constructor(private service: OrderService) {
     this.orders = [];
   }
 
@@ -24,29 +24,29 @@ export class StageComponent implements OnInit {
     this.updateOrders();
   }
 
-  private updateOrders(){
+  private updateOrders() {
     this.number_items = 0;
-    this.service.get_Active_Orders().subscribe(res =>{
+    this.service.get_Active_Orders().subscribe(res => {
       this.orders = res as Order[];
       this.filterOrders();
     });
   }
 
-  private filterOrders(){
-    let new_orders = [];
-    this.orders.forEach((order, index) =>{
+  private filterOrders() {
+    const new_orders = [];
+    this.orders.forEach((order, index) => {
       this.filterItems(order);
-      if(order.items.length > 0){
+      if (order.items.length > 0) {
         new_orders.push(order);
       }
     });
     this.orders = new_orders;
   }
 
-  private filterItems(order: Order){
-    let new_items = [];
+  private filterItems(order: Order) {
+    const new_items = [];
     order.items.forEach((item, index) => {
-      if(this.isRelevantItem(item)){
+      if (this.isRelevantItem(item)) {
         this.number_items += item.count;
         new_items.push(item);
       }
@@ -54,18 +54,18 @@ export class StageComponent implements OnInit {
     order.items = new_items;
   }
 
-  private isRelevantItem(item: OrderItem): boolean{
-    if(this.stageNumber === 0 && item.stages.length === 0 ){
+  private isRelevantItem(item: OrderItem): boolean {
+    if (this.stageNumber === 0 && item.stages.length === 0 ) {
       return true;
     }
-    if(this.get_maximum_stage(item.stages) === this.stageNumber -1){
+    if (this.get_maximum_stage(item.stages) === this.stageNumber - 1) {
       return true;
     }
     return false;
   }
 
-  private get_maximum_stage(stages): number{
-    if(stages.length === 0){
+  private get_maximum_stage(stages): number {
+    if (stages.length === 0) {
       return -1;
     }
     let maxi = stages[0].id;
@@ -75,8 +75,8 @@ export class StageComponent implements OnInit {
     return maxi;
   }
 
-  public stageCompleted(item: OrderItem){
-    item.stages.push({id: this.stageNumber, timestamp: Date.now()})
+  public stageCompleted(item: OrderItem) {
+    item.stages.push({id: this.stageNumber, timestamp: Date.now()});
     this.service.update_item(item);
   }
 

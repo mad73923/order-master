@@ -31,7 +31,7 @@ describe('OrdersOverviewRowComponent', () => {
   });
 
   it('should update the fields', () => {
-    component.orderDiv = {id: 123, date: 23747, items: [{count: 2, name: 'Spaghetti', price: 4.6, _id: "test", stages: []}], paid: false};
+    component.orderDiv = {id: 123, date: 23747, items: [{count: 2, name: 'Spaghetti', price: 4.6, _id: 'test', stages: []}], paid: false};
     component.ngOnInit();
   });
 });

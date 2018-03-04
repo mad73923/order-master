@@ -3,7 +3,7 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 import { OrderListItemComponent } from './order-list-item.component';
 
-const mockDiv = {count: 1, name: 'test', price: 88, _id: "123", stages: []};
+const mockDiv = {count: 1, name: 'test', price: 88, _id: '123', stages: []};
 
 describe('OderListItemComponent', () => {
   let component: OrderListItemComponent;

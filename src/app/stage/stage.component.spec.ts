@@ -14,10 +14,11 @@ class FakeService {
   }
 
   get_Active_Orders(): Observable<Order[]> {
-    return Observable.of([{id: 12, date: 1234, items: [{_id: "swfhef", count: 1, name: "pizza", price: 3.5, stages: []}, {_id: "swfhef", count: 1, name: "pizza", price: 3.5, stages: [{id: 0, timestamp: 214823}]}], paid: false}]);
+    return Observable.of([{id: 12, date: 1234, items: [{_id: 'swfhef', count: 1, name: 'pizza', price: 3.5, stages: []},
+    {_id: 'swfhef', count: 1, name: 'pizza', price: 3.5, stages: [{id: 0, timestamp: 214823}]}], paid: false}]);
   }
 
-  update_item(item: OrderItem){
+  update_item(item: OrderItem) {
 
   }
 }
@@ -57,6 +58,6 @@ describe('StageComponent', () => {
 
   it('should call update item', () => {
     component.stageNumber = 0;
-    component.stageCompleted({_id: "wfj", count: 1, name: "pizza", price: 5.5, stages: []});
+    component.stageCompleted({_id: 'wfj', count: 1, name: 'pizza', price: 5.5, stages: []});
   });
 });

@@ -17,8 +17,8 @@ export class OrderService {
   get_Active_Orders(): Observable<Object> {
     const uri = baseURI + 'orders/active';
     return this.http.get(uri)
-          .catch(err =>{
-                err.message = "Couldn't get active orders. Check connection to database server.\n"+err.message;
+          .catch(err => {
+                err.message = 'Couldn\'t get active orders. Check connection to database server.\n' + err.message;
                 throw(err);
           });
   }
@@ -32,15 +32,15 @@ export class OrderService {
     };
     // todo error handling not in service!
     this.http.post(uri, obj)
-             .subscribe(res => {console.log(res)},
-                        err => {console.log(err)});
+             .subscribe(res => {console.log(res); },
+                        err => {console.log(err); });
   }
 
-  update_item(item: OrderItem){
+  update_item(item: OrderItem) {
     const uri = baseURI + 'orders/item';
     this.http.put(uri, item)
-            .subscribe(res =>{console.log(res)},
-                        err =>{console.log(err)});
+            .subscribe(res => {console.log(res); },
+                        err => {console.log(err); });
   }
 
 }

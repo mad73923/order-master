@@ -16,7 +16,7 @@ class FakeHttpClientModule {
     return Observable.throw('');
   }
 
-  put(): Observable<any>{
+  put(): Observable<any> {
     return Observable.of();
   }
 }
@@ -40,6 +40,6 @@ describe('OrderService', () => {
   }));
 
   it('should create new order', inject([OrderService], (service: OrderService) => {
-    service.update_item({_id: "sjdfj", name: "pommes", price: 3.6, count: 1, stages: []});
+    service.update_item({_id: 'sjdfj', name: 'pommes', price: 3.6, count: 1, stages: []});
   }));
 });

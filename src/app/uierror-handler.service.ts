@@ -7,9 +7,9 @@ export class UierrorHandlerService extends ErrorHandler {
     super();
    }
 
-   handleError(error){
+   handleError(error) {
      super.handleError(error);
-     alert('Fehler: '+error.message);
+     alert('Fehler: ' + error.message);
    }
 
 }

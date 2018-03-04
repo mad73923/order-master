@@ -13,7 +13,7 @@ import { OrderService } from './order.service';
 import { OrdersOverviewComponent } from './orders-overview/orders-overview.component';
 import { OrdersOverviewRowComponent } from './orders-overview-row/orders-overview-row.component';
 import { UierrorHandlerService } from './uierror-handler.service';
-import { StageComponent } from './stage/stage.component'
+import { StageComponent } from './stage/stage.component';
 
 
 @NgModule({
