@@ -14,6 +14,7 @@ import { OrdersOverviewComponent } from './orders-overview/orders-overview.compo
 import { OrdersOverviewRowComponent } from './orders-overview-row/orders-overview-row.component';
 import { UierrorHandlerService } from './uierror-handler.service';
 import { StageComponent } from './stage/stage.component';
+import { WaitingTimeComponent } from './waiting-time/waiting-time.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { StageComponent } from './stage/stage.component';
     NewOrderComponent,
     OrdersOverviewComponent,
     OrdersOverviewRowComponent,
-    StageComponent
+    StageComponent,
+    WaitingTimeComponent
   ],
   imports: [
     BrowserModule,
