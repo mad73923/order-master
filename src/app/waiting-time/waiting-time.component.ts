@@ -11,7 +11,7 @@ export class WaitingTimeComponent implements OnInit {
   @Input()
   waitingSince: number;
 
-  private waiting_time: number;
+  waiting_time: number;
   private obs: any;
 
   constructor() { }

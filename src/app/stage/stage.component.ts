@@ -13,8 +13,8 @@ export class StageComponent implements OnInit {
   @Input()
   stageNumber: number;
 
-  private orders: Order[];
-  private number_items: number;
+  orders: Order[];
+  number_items: number;
 
   constructor(private service: OrderService) {
     this.orders = [];
