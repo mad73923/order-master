@@ -22,4 +22,10 @@ describe('WaitingTimeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should update the waiting time every second', (done) => {
+    component.obs.subscribe(() => {
+      done();
+    });
+  });
 });
