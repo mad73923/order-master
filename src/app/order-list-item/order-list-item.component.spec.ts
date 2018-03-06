@@ -3,6 +3,8 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 import { OrderListItemComponent } from './order-list-item.component';
 
+const mockDiv = {count: 1, name: 'test', price: 88, _id: '123', stages: []};
+
 describe('OderListItemComponent', () => {
   let component: OrderListItemComponent;
   let fixture: ComponentFixture<OrderListItemComponent>;
@@ -37,12 +39,12 @@ describe('OderListItemComponent', () => {
     component.updated();
   });
   it('should increment item count', () => {
-    component.itemDiv = {count: 1, name: 'test', price: 88};
+    component.itemDiv = mockDiv;
     component.incrementCount();
     expect(component.itemDiv.count).toEqual(2);
   });
   it('should decrement item count', (done) => {
-    component.itemDiv = {count: 2, name: 'test', price: 88};
+    component.itemDiv = mockDiv;
     component.decrementCount();
     expect(component.itemDiv.count).toEqual(1);
     component.deleteClicked.subscribe(() => {

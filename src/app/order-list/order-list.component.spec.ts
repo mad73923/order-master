@@ -15,6 +15,7 @@ class FakeService {
 
   }
 }
+const mockDiv = {count: 1, name: 'test', price: 88, _id: '123', stages: []};
 
 describe('OrderListComponent', () => {
   let component: OrderListComponent;
@@ -39,18 +40,17 @@ describe('OrderListComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should add a item', () => {
-    component.add_item({count: 1, name: 'Pizza', price: 66});
+    component.add_item(mockDiv);
     expect(component.items.length).toEqual(1);
+    component.add_item(mockDiv);
+    expect(component.items.length).toEqual(2);
   });
   it('should delete a item', () => {
-    const test1 = {count: 1, name: 'Pizza', price: 66};
-    const test2 = {count: 1, name: 'Pizza', price: 55};
-    component.add_item(test1);
-    // TODO dependency to test above
+    component.add_item(mockDiv);
     expect(component.items.length).toEqual(1);
-    component.deleteItem(test2);
-    expect(component.items.length).toEqual(1);
-    component.deleteItem(test1);
+    component.deleteItem(mockDiv);
+    expect(component.items.length).toEqual(0);
+    component.deleteItem(mockDiv);
     expect(component.items.length).toEqual(0);
   });
   it('should mark the order as paid', () => {
@@ -59,6 +59,7 @@ describe('OrderListComponent', () => {
     expect(component.paid).toEqual(true);
   });
   it('should call service new order', () => {
+    component.items = [mockDiv];
     component.submit_order();
   });
 });
