@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OrdersOverviewRowComponent } from './orders-overview-row.component';
 import { Order } from '../../shared/order';
+import { WaitingTimeComponent } from '../waiting-time/waiting-time.component';
 
 describe('OrdersOverviewRowComponent', () => {
   let component: OrdersOverviewRowComponent;
@@ -9,7 +10,7 @@ describe('OrdersOverviewRowComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OrdersOverviewRowComponent ]
+      declarations: [ OrdersOverviewRowComponent, WaitingTimeComponent ]
     })
     .compileComponents();
   }));
@@ -24,14 +25,8 @@ describe('OrdersOverviewRowComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should update the waiting time every second', (done) => {
-    component.obs.subscribe(() => {
-      done();
-    });
-  });
-
   it('should update the fields', () => {
-    component.orderDiv = {id: 123, date: 23747, items: [{count: 2, name: 'Spaghetti', price: 4.6}], paid: false};
+    component.orderDiv = {id: 123, date: 23747, items: [{count: 2, name: 'Spaghetti', price: 4.6, _id: 'test', stages: []}], paid: false};
     component.ngOnInit();
   });
 });

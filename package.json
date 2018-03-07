@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "db": "nodemon --watch db_server/routes --watch db_server/models ./db_server/server.js"
+    "db": "nodemon --watch db_server/routes --watch db_server/models ./db_server/server.js",
+    "dbdaemon": "mongod --dbpath ~/mongoDB"
   },
   "private": true,
   "dependencies": {

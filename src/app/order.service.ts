@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 
 import { Order } from '../shared/order';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import { OrderItem } from '../shared/order-item';
 
 const baseURI = 'http://localhost:4000/api/';
 
@@ -14,7 +16,11 @@ export class OrderService {
 
   get_Active_Orders(): Observable<Object> {
     const uri = baseURI + 'orders/active';
-    return this.http.get(uri);
+    return this.http.get(uri)
+          .catch(err => {
+                err.message = 'Couldn\'t get active orders. Check connection to database server.\n' + err.message;
+                throw(err);
+          });
   }
 
   new_Order(order: Order) {
@@ -24,8 +30,17 @@ export class OrderService {
       paid: order.paid,
       items: order.items
     };
+    // todo error handling not in service!
     this.http.post(uri, obj)
-             .subscribe(res => console.log(res));
+             .subscribe(res => {console.log(res); },
+                        err => {console.log(err); });
+  }
+
+  update_item(item: OrderItem) {
+    const uri = baseURI + 'orders/item';
+    this.http.put(uri, item)
+            .subscribe(res => {console.log(res); },
+                        err => {console.log(err); });
   }
 
 }
