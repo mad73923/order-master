@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var ItemStageSchema = new Schema({
     id: Number,
     timestamp: Number
-});
+}, {_id: false});
 
 var OrderItemSchema = new Schema({
     count: Number,
