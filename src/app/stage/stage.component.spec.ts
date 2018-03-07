@@ -6,6 +6,7 @@ import { Order } from '../../shared/order';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import { OrderItem } from '../../shared/order-item';
+import { WaitingTimeComponent } from '../waiting-time/waiting-time.component';
 
 
 class FakeService {
@@ -30,7 +31,7 @@ describe('StageComponent', () => {
   beforeEach(async(() => {
     TestBed.overrideComponent(StageComponent, {set: {providers: [{provide: OrderService, useClass: FakeService}]}});
     TestBed.configureTestingModule({
-      declarations: [ StageComponent ],
+      declarations: [ StageComponent, WaitingTimeComponent ],
       providers: [OrderService]
     })
     .compileComponents();

@@ -12,7 +12,7 @@ export class WaitingTimeComponent implements OnInit {
   waitingSince: number;
 
   waiting_time: number;
-  private obs: any;
+  obs: any;
 
   constructor() { }
 

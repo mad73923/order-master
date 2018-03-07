@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OrdersOverviewRowComponent } from './orders-overview-row.component';
 import { Order } from '../../shared/order';
+import { WaitingTimeComponent } from '../waiting-time/waiting-time.component';
 
 describe('OrdersOverviewRowComponent', () => {
   let component: OrdersOverviewRowComponent;
@@ -9,7 +10,7 @@ describe('OrdersOverviewRowComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OrdersOverviewRowComponent ]
+      declarations: [ OrdersOverviewRowComponent, WaitingTimeComponent ]
     })
     .compileComponents();
   }));

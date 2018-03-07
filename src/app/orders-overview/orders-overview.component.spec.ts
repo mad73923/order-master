@@ -6,6 +6,7 @@ import { OrderService } from '../order.service';
 import { Order } from '../../shared/order';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import { WaitingTimeComponent } from '../waiting-time/waiting-time.component';
 
 class FakeService {
   new_Order(order: Order) {
@@ -24,7 +25,7 @@ describe('OrdersOverviewComponent', () => {
   beforeEach(async(() => {
     TestBed.overrideComponent(OrdersOverviewComponent, {set: {providers: [{provide: OrderService, useClass: FakeService}]}});
     TestBed.configureTestingModule({
-      declarations: [ OrdersOverviewComponent, OrdersOverviewRowComponent ],
+      declarations: [ OrdersOverviewComponent, OrdersOverviewRowComponent, WaitingTimeComponent ],
       providers: [OrderService]})
     .compileComponents();
   }));
