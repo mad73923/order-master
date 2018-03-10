@@ -1,23 +1,34 @@
-var express = require('express'),
-    path = require('path'),
-    bodyParser = require('body-parser'),
-    cors = require('cors'),
-    mongoose = require('mongoose');
-    config = require('./DB');
+var app = require('express')();
+var path = require('path');
+var bodyParser = require('body-parser');
+var cors = require('cors');
+
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
+var mongoose = require('mongoose');
+var config = require('./DB');
 
 mongoose.connect(config.DB).then(
     () => {console.log('Database connected')},
     err => {console.log('Error connecting to database:\n' + err)}
 );
 
-const app = express();
-app.use(bodyParser.json());
 app.use(cors());
+app.use(bodyParser.json());
 var port = process.env.PORT || 4000;
 var orderRoutes = require('./routes/order_routes');
 
 app.use('/api/orders', orderRoutes);
 
-var server = app.listen(port, () => {
+io.on('connection', (socket) =>{
+    console.log("New Client connected");
+
+    socket.on('disconnect', () => {
+        console.log('Client disconnected');
+    })
+});
+
+http.listen(port, () => {
     console.log('DB server listening in port ' + port);
 });

@@ -6,12 +6,17 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import { OrderItem } from '../shared/order-item';
 
+import * as socketIo from 'socket.io-client';
+
 const baseURI = 'http://localhost:4000/api/';
 
 @Injectable()
 export class OrderService {
 
+  private socket;
+
   constructor(private http: HttpClient) {
+    this.socket = socketIo('http://localhost:4000');
   }
 
   get_Active_Orders(): Observable<Object> {
