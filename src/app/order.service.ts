@@ -17,6 +17,18 @@ export class OrderService {
 
   constructor(private http: HttpClient) {
     this.socket = socketIo('http://localhost:4000');
+    this.socket.on('connect', () => {
+      console.log('socketIO connected');
+    });
+    
+  }
+
+  on_update(): Observable<any>{
+    return new Observable<any>(observer => {
+      this.socket.on('update', () => {
+        observer.next();
+      });
+    });
   }
 
   get_Active_Orders(): Observable<Object> {

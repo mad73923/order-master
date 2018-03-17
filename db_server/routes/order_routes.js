@@ -4,6 +4,7 @@ var express = require('express'),
     orderRoutes = express.Router();
 
 var Order = require('../models/order');
+var io;
 
 orderRoutes.route('/add').post((req, res) => {
     var order = new Order(req.body);
@@ -39,11 +40,14 @@ orderRoutes.route('/item').put((req, res) => {
         let ind = findItemIndex(order, req.body);
         if(ind >= 0){
             order.items[ind] = req.body;
-            order.save()
-            .then(updatedOrder =>
-                res.json(updatedOrder))
-            .catch(err => {
-                res.status(400).send('Error updating item');
+            order.save((err, updatedOrder) => {
+                if(err){
+                    res.status(400).send('Error updating item:\n'+err);                    
+                }else{
+                    io.emit('update');
+                    res.json(updatedOrder);                    
+                }
+
             });
         }
     });
@@ -61,4 +65,7 @@ function findItemIndex(order, item){
     return ind;
 }
 
-module.exports = orderRoutes;
+module.exports = function(iop){
+    io = iop;
+    return orderRoutes;
+};

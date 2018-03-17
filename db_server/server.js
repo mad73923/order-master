@@ -17,7 +17,7 @@ mongoose.connect(config.DB).then(
 app.use(cors());
 app.use(bodyParser.json());
 var port = process.env.PORT || 4000;
-var orderRoutes = require('./routes/order_routes');
+var orderRoutes = require('./routes/order_routes')(io);
 
 app.use('/api/orders', orderRoutes);
 
