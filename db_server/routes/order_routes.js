@@ -34,13 +34,13 @@ orderRoutes.route('/active').get((req, res) => {
     });
 });
 
-orderRoutes.route('/item').put((req, res) => {
-    Order.findOne({'items._id': new mongodb.ObjectId(req.body._id)}, (err, order) =>{
+orderRoutes.route('/stage').put((req, res) => {
+    Order.findOne({'items._id': new mongodb.ObjectId(req.body.id)}, (err, order) =>{
         if(err)
             console.error(err);
-        let ind = findItemIndex(order, req.body);
+        let ind = findItemIndex(order, req.body.id);
         if(ind >= 0){
-            order.items[ind] = req.body;
+            order.items[ind].stages.push({id: req.body.stage, timestamp: Date.now()});
             order.save((err, updatedOrder) => {
                 if(err){
                     res.status(400).send('Error updating item:\n'+err);                    
@@ -54,11 +54,11 @@ orderRoutes.route('/item').put((req, res) => {
     });
 });
 
-function findItemIndex(order, item){
+function findItemIndex(order, id){
     let ind = -1;
-    item._id = new mongodb.ObjectId(item._id);
+    id_obj = new mongodb.ObjectId(id);
     order.items.forEach((element, index) => {
-        if(element._id.equals(item._id)){
+        if(element._id.equals(id_obj)){
             ind = index;
             return;
         }

@@ -53,11 +53,11 @@ export class OrderService {
                         err => {console.log(err); });
   }
 
-  update_item(item: OrderItem) {
-    const uri = baseURI + 'orders/item';
-    this.http.put(uri, item)
-            .subscribe(res => {console.log(res); },
-                        err => {console.log(err); });
+  stage_completed(item: OrderItem, stage: number) {
+    const uri = baseURI + 'orders/stage';
+    this.http.put(uri, {id: item['_id'], stage: stage})
+              .subscribe(res => console.log(res), 
+                        err => console.log(err));
   }
 
 }

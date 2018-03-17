@@ -82,8 +82,7 @@ export class StageComponent implements OnInit {
   }
 
   public stageCompleted(item: OrderItem) {
-    item.stages.push({id: this.stageNumber, timestamp: Date.now()});
-    this.service.update_item(item);
+    this.service.stage_completed(item, this.stageNumber);
   }
 
 }
