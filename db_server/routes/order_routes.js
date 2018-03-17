@@ -13,12 +13,13 @@ orderRoutes.route('/add').post((req, res) => {
     var date = new Date(now.getYear(), now.getMonth(), now.getDay()).getMilliseconds();
     Order.count({date: {$gte: date}}, (err, count) =>{
         order.id = count + 1;
-        order.save()
-        .then(item =>{
-            res.status(200).json({'order': 'Order added successfully'});
-        })
-        .catch(err => {
-            res.status(400).send('Error adding new order');
+        order.save((err, item) => {
+            if(err){
+                res.status(400).send('Error adding new order');                
+            }else{
+                io.emit('update');
+                res.status(200).json({'order': 'Order added successfully'});
+            }
         });
     });
 });
