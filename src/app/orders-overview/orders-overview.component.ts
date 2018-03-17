@@ -11,10 +11,19 @@ export class OrdersOverviewComponent implements OnInit {
 
   orders: Order[];
 
+  private update_obs: any;
+
   constructor(private service: OrderService) {
    }
 
   ngOnInit() {
+    this.update_orders();
+    this.update_obs = this.service.on_update().subscribe(() =>{
+      this.update_orders();
+    })
+  }
+
+  private update_orders(){
     this.service.get_Active_Orders().subscribe(res => {
       this.orders = res as Order[];
     });
