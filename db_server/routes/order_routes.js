@@ -4,6 +4,7 @@ var express = require('express'),
     orderRoutes = express.Router();
 
 var Order = require('../models/order');
+var io;
 
 orderRoutes.route('/add').post((req, res) => {
     var order = new Order(req.body);
@@ -12,12 +13,13 @@ orderRoutes.route('/add').post((req, res) => {
     var date = new Date(now.getYear(), now.getMonth(), now.getDay()).getMilliseconds();
     Order.count({date: {$gte: date}}, (err, count) =>{
         order.id = count + 1;
-        order.save()
-        .then(item =>{
-            res.status(200).json({'order': 'Order added successfully'});
-        })
-        .catch(err => {
-            res.status(400).send('Error adding new order');
+        order.save((err, item) => {
+            if(err){
+                res.status(400).send('Error adding new order');                
+            }else{
+                io.emit('update');
+                res.status(200).json({'order': 'Order added successfully'});
+            }
         });
     });
 });
@@ -32,28 +34,31 @@ orderRoutes.route('/active').get((req, res) => {
     });
 });
 
-orderRoutes.route('/item').put((req, res) => {
-    Order.findOne({'items._id': new mongodb.ObjectId(req.body._id)}, (err, order) =>{
+orderRoutes.route('/stage').put((req, res) => {
+    Order.findOne({'items._id': new mongodb.ObjectId(req.body.id)}, (err, order) =>{
         if(err)
             console.error(err);
-        let ind = findItemIndex(order, req.body);
+        let ind = findItemIndex(order, req.body.id);
         if(ind >= 0){
-            order.items[ind] = req.body;
-            order.save()
-            .then(updatedOrder =>
-                res.json(updatedOrder))
-            .catch(err => {
-                res.status(400).send('Error updating item');
+            order.items[ind].stages.push({id: req.body.stage, timestamp: Date.now()});
+            order.save((err, updatedOrder) => {
+                if(err){
+                    res.status(400).send('Error updating item:\n'+err);                    
+                }else{
+                    io.emit('update');
+                    res.json(updatedOrder);                    
+                }
+
             });
         }
     });
 });
 
-function findItemIndex(order, item){
+function findItemIndex(order, id){
     let ind = -1;
-    item._id = new mongodb.ObjectId(item._id);
+    id_obj = new mongodb.ObjectId(id);
     order.items.forEach((element, index) => {
-        if(element._id.equals(item._id)){
+        if(element._id.equals(id_obj)){
             ind = index;
             return;
         }
@@ -61,4 +66,7 @@ function findItemIndex(order, item){
     return ind;
 }
 
-module.exports = orderRoutes;
+module.exports = function(iop){
+    io = iop;
+    return orderRoutes;
+};

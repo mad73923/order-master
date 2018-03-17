@@ -6,12 +6,29 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import { OrderItem } from '../shared/order-item';
 
+import * as socketIo from 'socket.io-client';
+
 const baseURI = 'http://localhost:4000/api/';
 
 @Injectable()
 export class OrderService {
 
+  private socket;
+
   constructor(private http: HttpClient) {
+    this.socket = socketIo('http://localhost:4000');
+    this.socket.on('connect', () => {
+      console.log('socketIO connected');
+    });
+    
+  }
+
+  on_update(): Observable<any>{
+    return new Observable<any>(observer => {
+      this.socket.on('update', () => {
+        observer.next();
+      });
+    });
   }
 
   get_Active_Orders(): Observable<Object> {
@@ -36,11 +53,11 @@ export class OrderService {
                         err => {console.log(err); });
   }
 
-  update_item(item: OrderItem) {
-    const uri = baseURI + 'orders/item';
-    this.http.put(uri, item)
-            .subscribe(res => {console.log(res); },
-                        err => {console.log(err); });
+  stage_completed(item: OrderItem, stage: number) {
+    const uri = baseURI + 'orders/stage';
+    this.http.put(uri, {id: item['_id'], stage: stage})
+              .subscribe(res => console.log(res), 
+                        err => console.log(err));
   }
 
 }

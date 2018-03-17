@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { OrderService } from '../order.service';
 import { Order } from '../../shared/order';
 import { OrderItem } from '../../shared/order-item';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-stage',
@@ -16,12 +17,17 @@ export class StageComponent implements OnInit {
   orders: Order[];
   number_items: number;
 
+  private update_obs: any;
+
   constructor(private service: OrderService) {
     this.orders = [];
   }
 
   ngOnInit() {
     this.updateOrders();
+    this.update_obs = this.service.on_update().subscribe(() => {
+      this.updateOrders();
+    });
   }
 
   private updateOrders() {
@@ -76,8 +82,7 @@ export class StageComponent implements OnInit {
   }
 
   public stageCompleted(item: OrderItem) {
-    item.stages.push({id: this.stageNumber, timestamp: Date.now()});
-    this.service.update_item(item);
+    this.service.stage_completed(item, this.stageNumber);
   }
 
 }
