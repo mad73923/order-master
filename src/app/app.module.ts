@@ -15,7 +15,13 @@ import { OrdersOverviewRowComponent } from './orders-overview-row/orders-overvie
 import { UierrorHandlerService } from './uierror-handler.service';
 import { StageComponent } from './stage/stage.component';
 import { WaitingTimeComponent } from './waiting-time/waiting-time.component';
+import { RouterModule, Routes } from '@angular/router';
 
+const appRoutes: Routes = [
+  {path: 'active-orders', component: OrdersOverviewComponent},
+  {path: 'new-order', component: NewOrderComponent},
+  {path: 'stage/:id', component: StageComponent}
+];
 
 @NgModule({
   declarations: [
@@ -33,7 +39,8 @@ import { WaitingTimeComponent } from './waiting-time/waiting-time.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes)
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [OrderService, {provide: ErrorHandler, useClass: UierrorHandlerService}],
